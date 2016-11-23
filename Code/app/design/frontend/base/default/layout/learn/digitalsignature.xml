@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">    
+    <checkout_onepage_review>
+        <reference name="checkout.onepage.review.button">
+            <action method="setTemplate" ifconfig="digitalsignature/settings/active">
+                <template>digitalsignature/checkout/onepage/review/button.phtml</template>
+            </action>
+        </reference>
+
+        <!--
+        <reference name="checkout.onepage.review.info.items.before">
+            <block type="digitalsignature/digitalsignature" name="digitalsignature.review">
+                <action method="setTemplate" ifconfig="digitalsignature/settings/active">
+                    <template>digitalsignature/digitalsignature.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="checkout.onepage.review.info.items.after">
+            <block type="digitalsignature/digitalsignature" name="digitalsignature.review">
+                <action method="setTemplate" ifconfig="digitalsignature/settings/active">
+                    <template>digitalsignature/digitalsignature.phtml</template>
+                </action>
+            </block>
+        </reference>
+        -->
+    </checkout_onepage_review>
+
+    <checkout_onepage_index>        
+        <reference name="head">
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_css</type>
+                <name>css/digital_signature/jquery.signaturepad.css</name>
+                <params/>
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name>js/digital_signature/flashcanvas.js</name>
+                <params/>
+                <if><![CDATA[<!--[if (lt IE 9)]><!-->]]></if>
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name helper="digitalsignature/data/jquery_frontend_enable" />
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name>js/digital_signature/jquery.signaturepad.js</name>
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name>js/digital_signature/signaturepad.js</name>
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name>js/digital_signature/json2.min.js</name>
+            </action>
+        </reference>
+    </checkout_onepage_index>
+
+    <sales_order_view>
+        <reference name="head">
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_css</type>
+                <name>css/digital_signature/jquery.signaturepad.css</name>
+                <params/>
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name helper="digitalsignature/data/jquery_frontend_enable" />
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name>js/digital_signature/jquery.signaturepad.js</name>
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name>js/digital_signature/json2.min.js</name>
+            </action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="digitalsignature/sales_order_digitalsignature" name="digitalsignature.order"  after="sales.order.info">
+                <action method="setTemplate" ifconfig="digitalsignature/settings/active">
+                    <template>digitalsignature/sales/order/digital_signature.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </sales_order_view>
+</layout>

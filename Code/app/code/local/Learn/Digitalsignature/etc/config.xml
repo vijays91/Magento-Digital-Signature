@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Learn_Digitalsignature>
+            <version>1.0.1</version>
+        </Learn_Digitalsignature>
+    </modules>    
+    <frontend>
+        <layout>
+            <updates>
+                <digitalsignature>
+                    <file>learn/digitalsignature.xml</file>
+                </digitalsignature>
+            </updates>
+        </layout>
+        <events>
+            <checkout_type_onepage_save_order>
+                <observers>
+                    <digital_signature_value>
+                        <type>singleton</type>
+                        <class>digitalsignature/observer</class>
+                        <method>checkoutTypeOnepageSaveOrder</method>
+                    </digital_signature_value>
+                </observers>
+            </checkout_type_onepage_save_order>
+        </events>
+    </frontend>
+    <global>
+        <blocks>
+            <digitalsignature>
+                <class>Learn_Digitalsignature_Block</class>
+            </digitalsignature>
+            <checkout>
+                <rewrite>
+                    <agreements>Learn_Digitalsignature_Block_Checkout_Agreements</agreements>
+                </rewrite>
+            </checkout>
+        </blocks>
+        <helpers>
+            <digitalsignature>
+                <class>Learn_Digitalsignature_Helper</class>
+            </digitalsignature>
+        </helpers>
+        <models>
+            <digitalsignature>
+                <class>Learn_Digitalsignature_Model</class>
+                <resourceModel>digitalsignature_mysql4</resourceModel>
+            </digitalsignature>
+        </models>
+       <resources>
+            <digitalsignature_setup>
+                <setup>
+                    <module>Learn_Digitalsignature</module>
+                    <class>Mage_Sales_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </digitalsignature_setup>
+            <digitalsignature_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </digitalsignature_write>
+            <digitalsignature_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </digitalsignature_read>
+        </resources>
+    </global>
+    <default>
+        <digitalsignature>
+            <settings>
+                <active>1</active>
+                <required>1</required>
+                <frontend_name>Please enter text here</frontend_name>
+                <jquery_frontend>0</jquery_frontend>
+                <jquery_backend>1</jquery_backend>
+            </settings>
+        </digitalsignature>
+    </default>
+
+    <admin>
+        <routers>
+            <digitalsignature>
+                <use>admin</use>
+                <args>
+                    <module>Learn_Digitalsignature</module>
+                    <frontName>digitalsignature</frontName>
+                </args>
+            </digitalsignature>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <menu>
+            <digitalsignature module="digitalsignature">
+                <title>Digital Signature</title>
+                <sort_order>71</sort_order>
+                <children>
+                    <digitalsignature_grid module="digitalsignature">
+                        <title>Digital Signature Grid</title>
+                        <sort_order>20</sort_order>
+                        <action>digitalsignature/adminhtml_digitalsignature/</action>
+                    </digitalsignature_grid>
+                    <settings translate="title" module="digitalsignature">
+                        <title>General Settings</title>
+                        <action>adminhtml/system_config/edit/section/digitalsignature</action>
+                        <sort_order>40</sort_order>
+                    </settings>
+                </children>
+            </digitalsignature>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                            <digitalsignature>
+                                <title>Digital Signature</title>
+                                <children>
+                                    <dynamic_fields>
+                                        <title>Digital Signature Grid</title>
+                                    </dynamic_fields>
+                                    <settings>
+                                        <title>General Settings</title>
+                                    </settings>
+                                </children>
+                            </digitalsignature>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <digitalsignature translate="title" module="digitalsignature"> 
+                                            <title>Digital Signature Settings</title>
+                                            <sort_order>50</sort_order>
+                                        </digitalsignature>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <digitalsignature>
+                    <file>learn/digitalsignature.xml</file>
+                </digitalsignature>
+            </updates>
+        </layout>
+    </adminhtml>
+</config> 

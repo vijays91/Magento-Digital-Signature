@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<config>
+  	<tabs>
+        <myconf_vijaystore translate="label" module="digitalsignature">
+            <label>Digital Signature</label>
+            <sort_order>300</sort_order>
+        </myconf_vijaystore>
+    </tabs>	
+	<sections>
+		<digitalsignature translate="label" module="digitalsignature">
+			<label>Digital Signature</label>
+			<tab>myconf_vijaystore</tab>
+			<sort_order>999</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<settings translate="label">
+					<label>Digital Signature</label>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+						<fields>
+							<active translate="label comment">
+	                            <label>Enabled</label>
+	                            <frontend_type>select</frontend_type>
+	                            <source_model>adminhtml/system_config_source_yesno</source_model>
+								<validate>required-entry </validate> 
+	                            <sort_order>10</sort_order>
+	                            <show_in_default>1</show_in_default>
+	                            <show_in_website>1</show_in_website>
+	                            <show_in_store>1</show_in_store>
+	                        </active>
+	                        <!--
+							<required translate="label comment">
+	                            <label>Required filed</label>
+	                            <frontend_type>select</frontend_type>
+	                            <source_model>adminhtml/system_config_source_yesno</source_model>
+								<validate>required-entry </validate> 
+	                            <sort_order>20</sort_order>
+	                            <show_in_default>1</show_in_default>
+	                            <show_in_website>1</show_in_website>
+	                            <show_in_store>1</show_in_store>
+	                        </required>
+	                    	-->
+							<frontend_name translate="label comment">
+								<label>Frontend Name</label>
+								<frontend_type>text</frontend_type>
+								<validate>required-entry </validate> 
+								<sort_order>30</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</frontend_name>
+							<jquery_frontend translate="label comment">
+								<label>jQuery enable frontend</label>
+	                            <frontend_type>select</frontend_type>
+	                            <source_model>adminhtml/system_config_source_yesno</source_model>
+								<validate>required-entry </validate> 
+								<sort_order>40</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</jquery_frontend>
+							<jquery_backend translate="label comment">
+								<label>jQuery enable backend</label>
+	                            <frontend_type>select</frontend_type>
+	                            <source_model>adminhtml/system_config_source_yesno</source_model>
+								<validate>required-entry </validate> 
+								<sort_order>50</sort_order>
+								<show_in_default>1</show_in_default>
+								<show_in_website>1</show_in_website>
+								<show_in_store>1</show_in_store>
+							</jquery_backend>
+						</fields>
+				</settings>
+			</groups>
+		</digitalsignature>
+	</sections>
+</config>

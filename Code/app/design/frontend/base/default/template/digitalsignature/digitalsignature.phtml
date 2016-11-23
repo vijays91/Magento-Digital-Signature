@@ -1,0 +1,24 @@
+<?php
+
+    /*
+     * http://magento.stackexchange.com/questions/4478/adding-custom-fields-to-review-form
+     */ 
+?>
+<!-- <form action="" id="checkout-agreements" onsubmit="return false;"> -->
+    <div class="checkout-agreements">
+        <label for="namespace_reviewfield">Please specify Foo</label>
+        <input type="text" name="namespace_reviewfield" id="namespace_reviewfield"/>
+    </div>
+<!-- </form> -->
+
+<script type="text/javascript">
+    Review.prototype.save = Review.prototype.save.wrap(function(orig) {
+        var form = this.agreementsForm ? this.agreementsForm : payment.form; // work only enable terms and condision.
+        // var form = $('this.checkout-agreements') ? $('this.checkout-agreements') : $('payment.form');
+        if (form) {
+            var myfield = $('namespace_reviewfield');
+            form.insert(myfield);
+        }
+        orig();
+    });
+</script>

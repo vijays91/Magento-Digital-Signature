@@ -1,0 +1,80 @@
+<?php 
+/*
+
+
+ * Ref : http://magento.stackexchange.com/questions/4478/adding-custom-fields-to-review-form
+ */
+
+?>
+<?php 
+
+    $fronendDigitalSignName = $this->__('Print your name');
+    if($frontendName = Mage::helper('digitalsignature')->ds_fronend_name()) {
+        $fronendDigitalSignName = $this->__($frontendName);
+    }
+?>
+
+<form action="" id="checkout-agreements" onsubmit="return false;" class="sigPad">
+    <div class="checkout-onepage-review-agreements">
+        <?php /*- Type 1 -*/ ?>
+        <?php 
+        /* 
+        <label for="name"><?php echo $fronendDigitalSignName; ?></label>
+        <input type="text" name="name" id="name" class="name">
+
+        <p class="drawItDesc">Draw your signature</p>
+
+        <ul class="sigNav">
+            <li class="drawIt"><a href="#draw-it" >Draw It</a></li>
+            <li class="clearButton"><a href="#clear">Clear</a></li>
+        </ul>
+
+        <div class="sig sigWrapper">
+            <div class="typed"></div>
+            <canvas class="pad" width="350" height="55"></canvas>
+            <input type="hidden" name="output" id="output" class="output">
+        </div>
+        <script>signaturePad_activate();jQuery(".drawIt a").click();</script>
+        */
+        ?>
+
+        <?php /*- Type 2 -*/ ?>
+        <label for="name"><?php echo $fronendDigitalSignName; ?></label>
+        <input type="text" name="name" id="name" class="name input-text " maxlength="50" />
+
+        <p class="typeItDesc"><?php echo $this->__('Review your signature');?></p>
+        <p class="drawItDesc"><?php echo $this->__('Draw your signature');?></p>
+        
+        <ul class="sigNav">
+            <li class="typeIt"><a href="#type-it" class="current">Type It</a></li>
+            <li class="drawIt"><a href="#draw-it" >Draw It</a></li>
+            <li class="clearButton"><a href="#clear">Clear</a></li>
+        </ul>
+
+        <div class="sig sigWrapper">
+            <div class="typed"></div>
+            <canvas class="pad" width="350" height="55"></canvas>
+            <input type="hidden" name="output" id="output" class="output">
+        </div>
+        <script>signaturePad_activate();</script>
+    </div>
+
+    <?php if ($this->getAgreements()): ?>
+        <ol class="checkout-agreements">
+            <?php foreach ($this->getAgreements() as $_a): ?>
+            <li>
+                <div class="agreement-content"<?php echo ($_a->getContentHeight() ? ' style="height:' . $_a->getContentHeight() . '"' : '')?>>
+                    <?php if ($_a->getIsHtml()):?>
+                        <?php echo $_a->getContent() ?>
+                    <?php else:?>
+                        <?php echo nl2br($this->htmlEscape($_a->getContent())) ?>
+                    <?php endif; ?>
+                </div>
+                <p class="agree">
+                    <input type="checkbox" id="agreement-<?php echo $_a->getId()?>" name="agreement[<?php echo $_a->getId()?>]" value="1" title="<?php echo $this->htmlEscape($_a->getCheckboxText()) ?>" class="checkbox" /><label for="agreement-<?php echo $_a->getId()?>"><?php echo $_a->getIsHtml() ? $_a->getCheckboxText() : $this->htmlEscape($_a->getCheckboxText()) ?></label>
+                </p>
+            </li>
+            <?php endforeach ?>
+        </ol>
+    <?php endif; ?>
+</form>

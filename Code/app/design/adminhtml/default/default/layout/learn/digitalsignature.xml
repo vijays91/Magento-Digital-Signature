@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_sales_order_view>
+        <reference name="head">
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_css</type>
+                <name>css/digital_signature/jquery.signaturepad.css</name>
+                <params/>
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name helper="digitalsignature/data/jquery_backend_enable" />
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name>js/digital_signature/jquery.signaturepad.js</name>
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name>js/digital_signature/json2.min.js</name>
+            </action>
+        </reference>
+        <reference name="order_info">
+            <action method="setTemplate" ifconfig="digitalsignature/settings/active">
+                <template>digitalsignature/sales/order/view/info.phtml</template>
+            </action>
+        </reference>
+    </adminhtml_sales_order_view>
+
+    <digitalsignature_adminhtml_digitalsignature_index> 
+        <reference name="head">
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_css</type>
+                <name>css/digital_signature/jquery.signaturepad.css</name>
+                <params/>
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name helper="digitalsignature/data/jquery_backend_enable" />
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name>js/digital_signature/jquery.signaturepad.js</name>
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name>js/digital_signature/json2.min.js</name>
+            </action>
+        </reference>
+    <!--
+        <reference name="before_body_end">
+            <block type="core/template" name="digital_signature_grid">
+                <action method="setTemplate" ifconfig="digitalsignature/settings/active">
+                    <template>digitalsignature/digitalsignature_gird.phtml</template>
+                </action>
+            </block>
+        </reference>
+    -->
+    </digitalsignature_adminhtml_digitalsignature_index>
+
+    <digitalsignature_adminhtml_digitalsignature_view> 
+        <reference name="head">
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_css</type>
+                <name>css/digital_signature/jquery.signaturepad.css</name>
+                <params/>
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name helper="digitalsignature/data/jquery_backend_enable" />
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name>js/digital_signature/jquery.signaturepad.js</name>
+            </action>
+            <action method="addItem" ifconfig="digitalsignature/settings/active">
+                <type>skin_js</type>
+                <name>js/digital_signature/json2.min.js</name>
+            </action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="digitalsignature/adminhtml_digitalsignature_edit_form" name="digital_signature_grid">
+                <action method="setTemplate" ifconfig="digitalsignature/settings/active">
+                    <template>digitalsignature/digitalsignature_view.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </digitalsignature_adminhtml_digitalsignature_view>
+</layout>

@@ -1,0 +1,66 @@
+<?php 
+/*
+ *
+ * @BLOCK Learn_Digitalsignature_Block_Sales_Order_Digitalsignature
+ *
+ */
+?>
+
+<div class="col-set order-info-box">
+    <div class="col-12">
+        <div class="box">
+            <div class="box-title"  width="100%" style="background:#f4f4f4 none repeat scroll 0 0;width:100%;">
+                <h2><?php echo $this->__('Digital Signature') ?></h2>
+            </div>
+            <div class="box-content" style="float: none;" width="100%">
+                <div id="digital_sign">
+                    <div class="sigPad signed">
+                        <div class="sigWrapper">
+                            <table><!--  class="data-table linearize-table-large"> -->
+                                <tr>
+                                    <th><b><?php echo $this->__('Name');?></b></th> 
+                                    <th><b><?php echo $this->__('Signed');?></b></th>
+                                    <th><b><?php echo $this->__('Digital Signature');?></b></th>
+                                </tr>                    
+                                <tr>
+                                    <td width="30%" style="vertical-align:bottom;">
+                                        <?php echo $this->getDigitalSignatureNameValue(); ?>
+                                    </td>
+                                    <td id="sign"  width="30%">
+                                        <div class="typed"><?php echo $this->getDigitalSignatureNameValue(); ?></div>
+                                    </td>
+                                    <td id="digi_sign" width="60%">
+                                        <canvas class="pad" width="360" height="55"></canvas>
+                                    </td>
+                                </tr>
+                            </table>
+                            <script type="text/javascript">
+                                jQuery(document).ready(function() {
+                                    jQuery('.sigPad').signaturePad({displayOnly:true}).regenerate(<?php echo $this->getDigitalSignatureValue(); ?>);
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <?php /*
+                <div class="sigPad signed">
+                    <div class="sigWrapper">
+                        <div class="typed"><?php echo $this->getDigitalSignatureNameValue(); ?></div>
+                        <canvas class="pad" width="380" height="55"></canvas>
+                    </div>
+                    <p><?php echo $this->getDigitalSignatureNameValue(); ?></p>
+                </div>
+                <script type="text/javascript">
+                    jQuery(document).ready(function() {
+                        // regenerate signature
+                        jQuery('.sigPad').signaturePad({displayOnly:true}).regenerate(<?php echo $this->getDigitalSignatureValue(); ?>);
+                    });
+                </script>                
+                */ ?>
+            </div>
+        </div>
+    </div>
+</div>
